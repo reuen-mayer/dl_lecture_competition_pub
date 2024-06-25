@@ -403,7 +403,7 @@ def main():
     submission = [train_dataset.idx2answer[id] for id in submission]
     submission = np.array(submission)
     torch.save(model.state_dict(), "model.pth")
-    np.save("submission.npy", submission)
+    np.save("drive/MyDrive/Colab Notebooks/DL2024S/Final/submission.npy", submission)
 
 if __name__ == "__main__":
     main()
