@@ -405,5 +405,5 @@ def main():
     torch.save(model.state_dict(), "model.pth")
     np.save("drive/MyDrive/Colab Notebooks/DL2024S/Final/submission.npy", submission)
 
-if __name__ == "__main__":
-    main()
+#if __name__ == "__main__":
+#    main()
