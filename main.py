@@ -368,8 +368,8 @@ def main():
         transforms.Resize((224, 224)),
         transforms.ToTensor()
     ])
-    train_dataset = VQADataset(df_path="drive/MyDrive/Colab Notebooks/DL2024S/Final/train.json", image_dir="drive/MyDrive/Colab Notebooks/DL2024S/Final/train", transform=transform)
-    test_dataset = VQADataset(df_path="drive/MyDrive/Colab Notebooks/DL2024S/Final/valid.json", image_dir="drive/MyDrive/Colab Notebooks/DL2024S/Final/valid", transform=transform, answer=False)
+    train_dataset = VQADataset(df_path="C:/Users/ns/Documents/DLFinal/train.json", image_dir="C:/Users/ns/Documents/DLFinal/train", transform=transform)
+    test_dataset = VQADataset(df_path="C:/Users/ns/Documents/DLFinal/valid.json", image_dir="C:/Users/ns/Documents/DLFinal/valid", transform=transform, answer=False)
     test_dataset.update_dict(train_dataset)
 
     train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=128, shuffle=True)
@@ -403,7 +403,7 @@ def main():
     submission = [train_dataset.idx2answer[id] for id in submission]
     submission = np.array(submission)
     torch.save(model.state_dict(), "model.pth")
-    np.save("drive/MyDrive/Colab Notebooks/DL2024S/Final/submission.npy", submission)
+    np.save("submission.npy", submission)
 
 #if __name__ == "__main__":
 #    main()
