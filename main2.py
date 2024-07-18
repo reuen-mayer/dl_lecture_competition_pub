@@ -72,7 +72,7 @@ class VQADataset(torch.utils.data.Dataset):
         self.df = pandas.read_json(df_path)  # 画像ファイルのパス，question, answerを持つDataFrame
         self.answer = answer
                 
-        answer_id = pd.read_csv("/workspace/dl_lecture_competition_pub/data/class_mapping.csv")
+        answer_id = pd.read_csv("./data/class_mapping.csv")#class-mappingの使用
 
         self.answer2idx = dict(zip(answer_id["answer"], answer_id["class_id"]))
         self.idx2answer = {v: k for k, v in self.answer2idx.items()} 
@@ -374,8 +374,8 @@ def main():
         transforms.ToTensor(),
         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
     ])
-    train_dataset = VQADataset(df_path="/workspace/dl_lecture_competition_pub/data/train.json", image_dir="/workspace/dl_lecture_competition_pub/train", transform=transform)
-    test_dataset = VQADataset(df_path="/workspace/dl_lecture_competition_pub/data/valid.json", image_dir="/workspace/dl_lecture_competition_pub/valid", transform=transform, answer=False)
+    train_dataset = VQADataset(df_path="./data/train.json", image_dir="./data/train", transform=transform)
+    test_dataset = VQADataset(df_path="./data/valid.json", image_dir="./data/valid", transform=transform, answer=False)
     test_dataset.update_dict(train_dataset)
 
     train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=64, shuffle=True, pin_memory=True)
